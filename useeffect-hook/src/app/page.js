@@ -1,4 +1,5 @@
 "use client";
+import Users from "./components/page";
 import EffectWithState from "./components/useEffectWithState";
 import { useEffect } from "react";
 export default function Home() {
@@ -11,6 +12,7 @@ export default function Home() {
         <h1>Home PAge</h1>
       </div>
       <div><EffectWithState/></div>
+       <div><Users/></div>
       </>
   );
 }
