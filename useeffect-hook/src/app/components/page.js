@@ -1,32 +1,29 @@
-"use client";
+'use client';
 
-import { useEffect, useState } from "react";
+import { useEffect ,useState } from "react";
 
-export default function Users() {
 
-  const [users, setUsers] = useState([]);
-
-  useEffect(() => {
-
+export default function ApiCall(){
+  const [users,setUsers]=useState([])
+  useEffect(()=>{
     fetch("https://jsonplaceholder.typicode.com/users")
-      .then((res) => res.json())
-      .then((data) => setUsers(data));
+    .then((res)=>res.json())
+    .then((data)=>setUsers(data))
+  },[])
+  return(
+   <div>
+    <h1>
+      Users List
+    </h1>
 
-  }, []);
-
-  return (
-    <div>
-
-      <h1>User List</h1>
-
-      {
-        users.map((user) => (
-          <h2 key={user.id}>
-            {user.name}
-          </h2>
-        ))
-      }
-
-    </div>
-  );
+    {
+    users.map((us)=>(
+      <h1 key={us.id}>
+          {us.name}
+      </h1>
+    ))
+    }
+   </div>
+  
+  )
 }
