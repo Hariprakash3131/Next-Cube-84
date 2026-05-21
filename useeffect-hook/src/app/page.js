@@ -1,10 +1,13 @@
 "use client";
+import TaskThree from "./components/taskThree";
 // import ApiCall from "./components/page";
 // import TimerExample from "./components/setInterval";
 // // import Users from "./components/page";
 // import EffectWithState from "./components/useEffectWithState";
 // import { useEffect } from "react";
-import TaskOne from "./components/taskOne";
+// import TaskOne from "./components/taskOne";
+// import TaskTwo from "./components/taskTwo";
+
 export default function Home() {
   // useEffect(()=>{
   //   console.log('Page Loaded')
@@ -17,7 +20,9 @@ export default function Home() {
       <div><EffectWithState/></div>
        <div><ApiCall/></div>
         <TimerExample/> */}
-        <TaskOne/>
+        {/* <TaskOne/> */}
+        {/* <TaskTwo/> */}
+        <TaskThree/>
       </>
   );
 }
