@@ -52,6 +52,74 @@ export default function Home() {
       setLoading(false)
     },200)
 },[])
+
+useEffect(()=>{
+  localStorage.setItem('tasks',JSON.stringify(tasks))
+},[tasks])
+
+const focusInput=()=>{
+  inputRef.current.focus()
+}
+
+const handleAddTask=()=>{
+  if(!input.trim()){
+    setError("Task Cannot be empty")
+    return
+  }
+  const newTask={
+    id:Date.now(),
+    title:input,
+    completed:false,
+    createdAt:new Date().toISOString()
+  }
+  dispatch({
+    type:"ADD_TASK",
+    payload:newTask
+  })
+
+  setInput("")
+  setError("")
+  inputRef.current.focus()
+}
+
+const handleDelete=useCallback((id)=>{
+  dispatch({
+    type:"DELETE_TASK",
+    payload:id
+  })
+},[])
+
+const handleToggle=useCallback((id)=>{
+  dispatch({
+    type:'TOGGLE_TASK',
+    payload:id
+  })
+},[])
+
+const clearCompleted=useMemo(()=>{
+  return tasks.filter(task=>{
+    const matchSearch=task.title
+    .toLowerCase()
+    .includes(search.toLowerCase())
+
+    const matchesFilter=
+    filter==='all'
+    ?true
+    : filter==='completed'
+    ?task.completed
+    :!task.completed
+
+    return matchesSearch && matchFilter
+  })
+},[task,search,filter])
+
+if(loading){
+  return(
+    <div className="p-10 text-2xl font-bold">
+      Loading...
+    </div>
+  )
+}
    return(
 
    )
