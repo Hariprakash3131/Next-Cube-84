@@ -1,6 +1,7 @@
 'use client'
 import {useState,useRef,useCallback,useEffect,useMemo,useReducer} from "react"
 import { initialState,taskReducer } from "./reducers/taskReducers";
+import Header from "@/components/Header";
 export default function Home() {
 
    const [task,dispatch]=useReducer(taskReducer,initialState)
@@ -111,7 +112,7 @@ const clearCompleted=useMemo(()=>{
 
     return matchesSearch && matchFilter
   })
-},[task,search,filter])
+},[tasks, search, filter])
 
 if(loading){
   return(
@@ -121,6 +122,8 @@ if(loading){
   )
 }
    return(
-
+    <main className="max-w-3xl mx-auto p-6">
+      
+    </main>
    )
 }
