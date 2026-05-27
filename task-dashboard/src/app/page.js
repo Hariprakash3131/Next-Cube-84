@@ -8,7 +8,7 @@ import SearchBar from "@/components/SearchBar"
 import TaskList from "@/components/TaskList"
 import StatsPanel from "@/components/StatsPanel"
 
-import { initialState, taskReducer } from "@/reducers/taskReducer"
+import { initialState, taskReducer } from "./reducers/taskReducers"
 
 export default function Home() {
 

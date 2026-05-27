@@ -17,7 +17,7 @@ export default function TaskItem({
             </p>
 
             <p className="text-sm text-gray-400">
-                {new Date(task.createAt).toLocaleString()}
+                {new Date(task.createdAt).toLocaleString()}
             </p>
                 </div>
             </div>

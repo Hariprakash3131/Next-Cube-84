@@ -15,7 +15,7 @@ export function taskReducer(state,action){
                 {...task, completed: !task.completed}
                 :task
             )
-        case "CLEAR-COMPLETED":
+        case "CLEAR_COMPLETED":
             return state.filter(task=>!task.completed)
         
         default:

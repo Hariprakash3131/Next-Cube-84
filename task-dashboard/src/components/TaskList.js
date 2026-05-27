@@ -16,14 +16,14 @@ export default function TaskList({
     return(
         <div className="mt-6 space-y-3">
             {
-                tasks.map(task=>{
+                tasks.map(task => (
                     <TaskItem
                     key={task.id}
                     task={task}
                     handleDelete={handleDelete}
                     handleToggle={handleToggle}
                     />
-                })
+                ))
             }
         </div>
     )
