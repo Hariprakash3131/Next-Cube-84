@@ -34,7 +34,7 @@ export default function Home() {
 
       if (savedTasks) {
 
-        const parsedTasks = JSON.parse(savedTasks)
+        const parsedTasks = JSON.parse(savedTasks)    //Convert string to JavaScript array.
 
         parsedTasks.forEach(task => {
           dispatch({
