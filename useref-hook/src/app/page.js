@@ -1,8 +1,10 @@
-import InputFocus from "./components/useRef";
-import Counter from "./components/useRefCounter";
+import Focus from "./components/inputFocus";
+
+
 export default function Home() {
   return (
     // <InputFocus/>
-    <Counter/>
+    // <Counter/>
+    <Focus/>
   );
 }
