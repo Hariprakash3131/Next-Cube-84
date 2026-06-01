@@ -16,7 +16,7 @@ export default function Counter(){
     }
 
     return(
-        <div className="flex justify-center items-center h-screen bg-gray-100">
+        <div className="flex justify-center   items-center h-screen bg-gray-100">
 
             <div className="bg-white p-10 rounded-3xl shadow-xl text-center w-[350px]">
 
