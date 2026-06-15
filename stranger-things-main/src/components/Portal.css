@@ -1,0 +1,54 @@
+.portal {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  background: radial-gradient(circle at center, #0d2b2b 0%, #04060a 70%);
+}
+
+.portal__ring {
+  position: absolute;
+  width: 60vmin;
+  height: 60vmin;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  will-change: transform;
+}
+
+.portal__ring-inner {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  border: 2px solid rgba(0, 217, 255, 0.4);
+  box-shadow: 0 0 60px rgba(0, 217, 255, 0.4),
+    inset 0 0 80px rgba(0, 217, 255, 0.3);
+  animation: spin 12s linear infinite;
+}
+.portal__ring-inner--2 {
+  inset: 15%;
+  border-color: rgba(255, 0, 64, 0.4);
+  box-shadow: 0 0 40px rgba(255, 0, 64, 0.4),
+    inset 0 0 60px rgba(255, 0, 64, 0.3);
+  animation-direction: reverse;
+  animation-duration: 8s;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+.portal__text {
+  position: relative;
+  z-index: 3;
+  text-align: center;
+  font-family: "Cinzel", serif;
+  font-weight: 700;
+  font-size: clamp(2rem, 6vw, 4.5rem);
+  letter-spacing: 5px;
+  line-height: 1.1;
+  color: #fff;
+  text-shadow: 0 0 20px var(--electric), 0 0 40px rgba(0, 217, 255, 0.5);
+}

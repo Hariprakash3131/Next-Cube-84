@@ -1,0 +1,128 @@
+.finale {
+  position: relative;
+  height: 100vh;
+  overflow: hidden;
+  cursor: none;
+}
+
+/* base — upside down image (always visible underneath) */
+.finale__base {
+  position: absolute;
+  inset: 0;
+  background: url("/v1.png") center top / cover no-repeat;
+  z-index: 0;
+}
+
+/* cover — will1.webp sits on top, cursor mask cuts a hole through it */
+.finale__cover {
+  position: absolute;
+  inset: 0;
+  background: url("/will1.webp") center top / cover no-repeat;
+  z-index: 1;
+  opacity: 0;
+  transition: opacity 0.55s ease;
+
+  -webkit-mask-image: radial-gradient(
+    ellipse 320px 260px at var(--x) var(--y),
+    transparent 0%,
+    transparent 40%,
+    rgba(0,0,0,0.6) 60%,
+    black 80%
+  );
+  mask-image: radial-gradient(
+    ellipse 320px 260px at var(--x) var(--y),
+    transparent 0%,
+    transparent 40%,
+    rgba(0,0,0,0.6) 60%,
+    black 80%
+  );
+
+  --x: -999px;
+  --y: -999px;
+}
+
+.finale__cover.active {
+  opacity: 1;
+}
+
+/* text sits above both layers */
+.finale__content {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+  text-align: center;
+}
+
+.finale__hint {
+  font-family: "Special Elite", monospace;
+  font-size: clamp(0.65rem, 1.2vw, 0.85rem);
+  letter-spacing: 6px;
+  text-transform: uppercase;
+  color: rgba(200, 170, 170, 0.7);
+  margin-bottom: 1rem;
+}
+
+.finale__title {
+  font-family: "Bebas Neue", sans-serif;
+  font-size: clamp(3rem, 10vw, 7rem);
+  letter-spacing: 10px;
+  color: var(--blood-red);
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.finale__letter {
+  display: inline-block;
+  opacity: 0;
+  transform: translateY(40px) rotate(8deg) scaleX(1.4);
+  filter: blur(8px);
+  color: #1a0000;
+  text-shadow: none;
+  transition: none;
+}
+
+.finale__letter.glitch {
+  animation: horrorGlitch 0.3s steps(1) forwards;
+}
+
+.finale__letter.revealed {
+  opacity: 1;
+  transform: translateY(0) rotate(0deg) scaleX(1);
+  filter: blur(0);
+  color: var(--blood-red);
+  text-shadow:
+    0 0 20px var(--crimson),
+    0 0 60px #8b0000,
+    0 0 120px rgba(200, 0, 0, 0.35);
+  transition:
+    opacity 0.35s ease,
+    transform 0.5s cubic-bezier(0.23, 1, 0.32, 1),
+    filter 0.4s ease,
+    color 0.3s ease,
+    text-shadow 0.3s ease;
+  animation: flicker 8s infinite;
+  animation-delay: calc(var(--i) * 0.3s);
+}
+
+@keyframes horrorGlitch {
+  0%   { opacity: 1; transform: translateY(-30px) skewX(20deg) scaleX(1.6); filter: blur(6px) brightness(3); color: #ff0000; }
+  10%  { opacity: 0; transform: translateY(20px)  skewX(-15deg) scaleX(0.7); filter: blur(12px); color: #fff; }
+  20%  { opacity: 1; transform: translateY(-10px) skewX(10deg); filter: blur(4px) brightness(5); color: #ff2200; }
+  30%  { opacity: 0; transform: translateY(15px)  skewX(-8deg); filter: blur(10px); }
+  40%  { opacity: 1; transform: translateY(-5px)  skewX(5deg); filter: blur(2px) brightness(3); color: #cc0000; }
+  55%  { opacity: 0; transform: translateY(8px); filter: blur(8px); }
+  70%  { opacity: 1; transform: translateY(-3px) skewX(3deg); filter: blur(1px); color: #ff1a1a; }
+  85%  { opacity: 0.5; transform: translateY(2px); filter: blur(3px); }
+  100% { opacity: 1; transform: translateY(0) skewX(0); filter: blur(0); color: var(--blood-red); }
+}
+
+@keyframes flicker {
+  0%, 17%, 19%, 77%, 100% { opacity: 1; }
+  18%, 78%                 { opacity: 0.3; text-shadow: none; }
+}

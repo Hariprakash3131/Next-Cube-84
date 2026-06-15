@@ -1,0 +1,36 @@
+.footer {
+  padding: 4rem 2rem 3rem;
+  text-align: center;
+  background: #020304;
+  border-top: 1px solid rgba(232, 54, 45, 0.2);
+}
+
+.footer__lights {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.3rem;
+  margin-bottom: 2rem;
+}
+.footer__bulb {
+  font-family: "Bebas Neue", sans-serif;
+  font-size: 1.8rem;
+  color: #ffcf66;
+  text-shadow: 0 0 10px #ffae00, 0 0 20px #ff8c00;
+  animation: bulb 2.5s infinite;
+}
+@keyframes bulb {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.25; text-shadow: none; }
+}
+
+.footer__text {
+  color: #66767c;
+  font-size: 0.85rem;
+}
+.footer__credit {
+  color: #44525a;
+  font-size: 0.75rem;
+  margin-top: 0.5rem;
+  letter-spacing: 1px;
+}

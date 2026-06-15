@@ -1,0 +1,297 @@
+/* ═══════════════════════════════════════════════════════════
+   HERO
+═══════════════════════════════════════════════════════════ */
+
+.fb-section {
+  position: relative;
+  height: 100vh;
+  background: #03040a;
+}
+
+.fb-scene {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background:
+    radial-gradient(ellipse 70% 50% at 50% 30%, #1a0505 0%, transparent 70%),
+    radial-gradient(ellipse 100% 60% at 50% 90%, #100303 0%, transparent 65%),
+    #030408;
+}
+
+/* ── fixed overlay ── */
+.char-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+  z-index: 99999;
+}
+
+.char-overlay__char {
+  position: absolute;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+  will-change: transform, opacity;
+  /* NO overflow:hidden — never clip the flying char */
+}
+
+.char-overlay__char img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: bottom center;
+  filter: contrast(1.1) saturate(1.08);
+  user-select: none;
+  pointer-events: none;
+}
+
+
+
+/* ═══════════════════════════════
+   SKY
+═══════════════════════════════ */
+.fb-sky {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background:
+    /* burning horizon */
+    linear-gradient(to top,
+      #2a0500 0%,
+      #150203 18%,
+      #0a0110 45%,
+      #060010 75%,
+      #030408 100%
+    );
+  pointer-events: none;
+}
+
+/* ═══════════════════════════════
+   DIMENSIONAL RIFT + VECNA
+═══════════════════════════════ */
+.fb-rift-wrap {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  pointer-events: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.fb-rift-svg {
+  position: absolute;
+  top: -5%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: min(780px, 90vw);
+  height: auto;
+  will-change: transform, opacity;
+}
+
+/* ═══════════════════════════════
+   RED CLOUDS
+═══════════════════════════════ */
+.fb-clouds {
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+  pointer-events: none;
+  background:
+    radial-gradient(ellipse 90% 35% at 10% 20%, rgba(180,12,12,0.5) 0%, transparent 65%),
+    radial-gradient(ellipse 60% 28% at 85% 12%, rgba(140,8,8,0.42) 0%, transparent 55%),
+    radial-gradient(ellipse 50% 22% at 50% 8%,  rgba(160,10,10,0.35) 0%, transparent 60%),
+    radial-gradient(ellipse 70% 30% at 30% 35%, rgba(100,5,5,0.22) 0%, transparent 55%),
+    radial-gradient(ellipse 65% 28% at 72% 30%, rgba(100,5,5,0.18) 0%, transparent 50%);
+  animation: cloudDrift 24s ease-in-out infinite alternate;
+}
+@keyframes cloudDrift {
+  from { transform: translateX(-2.5%) scaleX(1.00); }
+  to   { transform: translateX( 2.5%) scaleX(1.04); }
+}
+
+/* ═══════════════════════════════
+   UPSIDE-DOWN GROUND VINES
+═══════════════════════════════ */
+.fb-vines {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 28%;
+  z-index: 4;
+  pointer-events: none;
+  opacity: 0.92;
+}
+
+/* ═══════════════════════════════
+   FOG
+═══════════════════════════════ */
+.fb-fog {
+  position: absolute;
+  inset: 0;
+  z-index: 5;
+  pointer-events: none;
+  will-change: transform;
+  background:
+    radial-gradient(ellipse 110% 25% at 50% 105%, rgba(12,4,4,0.85) 0%, transparent 70%),
+    radial-gradient(ellipse  90% 18% at 20%  98%, rgba(20,6,6,0.55) 0%, transparent 60%),
+    radial-gradient(ellipse  90% 18% at 80%  98%, rgba(20,6,6,0.55) 0%, transparent 60%),
+    radial-gradient(ellipse  60% 12% at 50%  75%, rgba(8,3,3,0.30) 0%, transparent 55%);
+}
+
+/* ═══════════════════════════════
+   FIRE GLOW FROM BELOW
+═══════════════════════════════ */
+.fb-fire {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 38%;
+  z-index: 6;
+  pointer-events: none;
+  will-change: transform, opacity;
+  background:
+    radial-gradient(ellipse 80% 45% at 50% 100%, rgba(220,60,0,0.55) 0%, transparent 65%),
+    radial-gradient(ellipse 40% 30% at 25% 100%, rgba(180,40,0,0.35) 0%, transparent 60%),
+    radial-gradient(ellipse 40% 30% at 75% 100%, rgba(180,40,0,0.35) 0%, transparent 60%);
+  mix-blend-mode: screen;
+}
+
+/* ═══════════════════════════════
+   FLOATING SPORES
+═══════════════════════════════ */
+.fb-spores {
+  position: absolute;
+  inset: 0;
+  z-index: 7;
+  overflow: hidden;
+  pointer-events: none;
+}
+.fb-spores-outer {
+  position: fixed;
+  inset: 0;
+  z-index: 25;
+  pointer-events: none;
+}
+.fb-spore {
+  position: absolute;
+  bottom: -8px;
+  border-radius: 50%;
+  background: rgba(255, 230, 200, 0.8);
+  filter: blur(0.5px);
+  animation: sporeRise linear infinite;
+}
+@keyframes sporeRise {
+  0%   { transform: translateY(0)       translateX(0);    opacity: 0; }
+  6%   { opacity: 1; }
+  85%  { opacity: 0.7; }
+  100% { transform: translateY(-108vh)  translateX(30px); opacity: 0; }
+}
+
+/* ═══════════════════════════════
+   DEPTH VIGNETTE
+═══════════════════════════════ */
+.fb-vignette {
+  position: absolute;
+  inset: 0;
+  z-index: 8;
+  pointer-events: none;
+  background: radial-gradient(ellipse at 50% 45%,
+    transparent 28%,
+    rgba(3,4,8,0.35) 58%,
+    rgba(3,4,8,0.88) 100%
+  );
+}
+
+/* ═══════════════════════════════
+   GROUND FADE
+═══════════════════════════════ */
+.fb-ground {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 20%;
+  z-index: 9;
+  pointer-events: none;
+  background: linear-gradient(to top,
+    rgba(3,4,8,1)   0%,
+    rgba(3,4,8,0.6) 40%,
+    transparent     100%
+  );
+}
+
+/* ═══════════════════════════════
+   TITLE
+═══════════════════════════════ */
+.fb-title-wrap {
+  position: absolute;
+  top: 4.5%;
+  left: 50%;
+  transform: translateX(-50%);
+  text-align: center;
+  z-index: 8;
+  pointer-events: none;
+  white-space: nowrap;
+}
+
+.fb-title-bg {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%;
+  height: 300%;
+  background: url("/v1.png") center 8% / cover no-repeat;
+  opacity: 0.7;
+  pointer-events: none;
+  z-index: -1;
+  mix-blend-mode: normal;
+}
+.fb-title {
+  font-family: "Bebas Neue", sans-serif;
+  font-size: clamp(3rem, 9.5vw, 8.5rem);
+  letter-spacing: 12px;
+  color: var(--blood-red);
+  text-shadow:
+    0 0 6px  #fff,
+    0 0 14px var(--crimson),
+    0 0 35px #ff0000,
+    0 0 70px #8b0000;
+  animation: flicker 8s infinite;
+}
+@keyframes flicker {
+  0%,17%,19%,77%,100% { opacity: 1; }
+  18%,78%              { opacity: 0.35; text-shadow: none; }
+  54%                  { opacity: 0.8; }
+}
+.fb-subtitle {
+  font-family: "Special Elite", monospace;
+  font-size: clamp(0.6rem, 1.3vw, 0.88rem);
+  letter-spacing: 6px;
+  color: #6a808a;
+  margin-top: 0.3rem;
+  text-transform: uppercase;
+}
+
+/* ═══════════════════════════════
+   CHARACTER FORMATION
+═══════════════════════════════ */
+
+
+/* ═══════════════════════════════
+   RESPONSIVE
+═══════════════════════════════ */
+@media (max-width: 900px) {
+  .fb-rift-svg { width: min(600px, 95vw); }
+}
+@media (max-width: 600px) {
+  .fb-rift-svg { width: 100vw; }
+}

@@ -1,0 +1,89 @@
+.creatures {
+  padding: 8rem 2rem;
+  background: radial-gradient(ellipse at top, #1a0808 0%, #04060a 70%);
+}
+
+.creatures__title {
+  color: var(--neon-red);
+  text-shadow: 0 0 20px var(--neon-red);
+}
+
+.creatures__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 2rem;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.creature-card {
+  height: 380px;
+  perspective: 1200px;
+}
+.creature-card__inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transition: transform 0.7s;
+  transform-style: preserve-3d;
+}
+.creature-card:hover .creature-card__inner {
+  transform: rotateY(180deg);
+}
+
+.creature-card__front,
+.creature-card__back {
+  position: absolute;
+  inset: 0;
+  backface-visibility: hidden;
+  border-radius: 12px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem;
+  text-align: center;
+  border: 1px solid rgba(255, 0, 64, 0.3);
+}
+
+.creature-card__front {
+  background: rgba(20, 6, 6, 0.85);
+  gap: 0.6rem;
+}
+.creature-card__img {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+  object-position: top center;
+  border-radius: 8px;
+  filter: brightness(1.1) contrast(1.1) saturate(1.1);
+}
+.creature-card__front h3 {
+  font-family: "Bebas Neue", sans-serif;
+  font-size: 2rem;
+  letter-spacing: 3px;
+  color: #fff;
+}
+
+.threat {
+  margin-top: 1rem;
+  padding: 0.3rem 0.8rem;
+  border-radius: 4px;
+  font-size: 0.75rem;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+.threat--high { background: #5a1a1a; color: #ff8080; }
+.threat--extreme { background: #6a0d0d; color: #ff4d4d; }
+.threat--apocalyptic { background: #8b0000; color: #fff; box-shadow: 0 0 15px var(--neon-red); }
+.threat--medium { background: #4a3a1a; color: #ffcf80; }
+
+.creature-card__back {
+  background: rgba(40, 8, 8, 0.95);
+  transform: rotateY(180deg);
+}
+.creature-card__back p {
+  color: #d8c0c0;
+  font-size: 0.9rem;
+  line-height: 1.6;
+}
