@@ -180,7 +180,7 @@ export default function Counter() {
             }}
             className="rounded-lg border border-white/10 bg-white/[0.04] p-6 shadow-2xl shadow-black/30 backdrop-blur"
           >
-            <div className="flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
+            <div className="flex  flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
               <h2 className="text-2xl font-bold text-white">{title}</h2>
               <p className="text-zinc-300">{description}</p>
             </div>
